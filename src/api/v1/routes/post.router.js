@@ -3,9 +3,9 @@ import PostController from '../controllers/post.controller'
 
 export default express
   .Router()
-  .get('/', PostController.getAllUsers)
-  .post('/', PostController.createUser)
-  .get('/:id', PostController.getUser)
-  .patch('/:id', PostController.updateUser)
-  .delete('/:id', PostController.deleteUser)
+  .get('/', PostController.getAllPosts)
+  .post('/', PostController.createPost)
+  .get('/:id', PostController.getPost)
+  .patch('/:id', PostController.updatePost)
+  .delete('/:id', PostController.deletePost)
   
