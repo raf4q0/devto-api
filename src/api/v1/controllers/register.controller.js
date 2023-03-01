@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import logger from '../../../../src/api/middlewares/logger'
+import logger from '../../middlewares/logger'
 import User from '../models/user.model'
 
 export class RegisterController {
