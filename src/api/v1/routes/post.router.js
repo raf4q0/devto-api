@@ -1,5 +1,5 @@
 import * as express from 'express';
-import UserController from '../controllers/user.controller'
+import PostController from '../controllers/user.controller'
 
 export default express
   .Router()
