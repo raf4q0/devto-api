@@ -1,11 +1,39 @@
 import bcrypt from 'bcrypt'
-import User from '../models/User'
-import JwtServices from '../services/JwtServices'
+import User from '../models/user.model'
+import JwtServices from '../../services/jwt.services'
+
+import { AuthErrorHandler } from '../../middlewares/auth'
 
 
 export class SessionController {
-  login(request, response) {
-    response.json({ message: 'login Controller' })
+  async login(request, response, next) {
+    try {
+      const { email, password } = request.body
+  
+      // check if email exists
+      const user = await User.findOne({ email })
+  
+      if (!user) {
+        return next(AuthErrorHandler.wrongCredentials())
+      }
+  
+      // compare password
+  
+      const match = await bcrypt.compare(password, user.password)
+  
+      if (!match) {
+        return next(AuthErrorHandler.wrongCredentials())
+      }
+  
+      const accessToken = JwtServices.sign({ _id: user._id, role: user.role, email: user.email });
+      // const refreshToken = JwtServices.sign({ _id: user._id, role: user.role }, '1y', REFRESH_SECRET);
+  
+      // await RefreshToken.create({ token: refreshToken })
+  
+      response.status(201).send({ access_token: accessToken })
+    } catch (error) {
+      next(error)
+    }
   }
 
   logout(request, response) {
