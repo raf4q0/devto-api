@@ -2,6 +2,7 @@
 
 export class UserController {
   getAllUsers(request, response) {
+    // logica de modelos para hacer queries
     response.json({ message: 'Get All Users OK' })
   }
 
