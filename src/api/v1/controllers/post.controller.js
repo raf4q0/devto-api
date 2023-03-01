@@ -1,24 +1,24 @@
 
-export class UserController {
-  getAllUsers(request, response) {
+export class PostController {
+  getAllPosts(request, response) {
     response.json({ message: 'Get All Users OK' })
   }
 
-  getUser(request, response) {
+  getPost(request, response) {
     response.json({ message: 'Get User OK' })
   }
 
-  createUser(request, response) {
+  createPost(request, response) {
     response.json({ message: 'Create User OK' })
   }
 
-  updateUser(request, response) {
+  updatePost(request, response) {
     response.json({ message: 'Update User OK' })
   }
 
-  deleteUser(request, response) {
+  deletePost(request, response) {
     response.json({ message: 'Delete User OK' })
   }
 }
 
-export default new UserController()
+export default new PostController()
