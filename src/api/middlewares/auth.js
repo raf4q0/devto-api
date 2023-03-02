@@ -1,22 +1,6 @@
-import logger from './logger'
 import JwtServices from '../services/jwt.services';
 
-export class AuthErrorHandler extends Error {
-  constructor(status, msg)  {
-    super();
-    this.status = status;
-    this.message = msg;
-  }
-
-  static wrongCredentials(message = 'Wrong credentials, check your email/password') {
-    return new AuthErrorHandler(401, message); //401 Wrong Credentials
-  }
-
-  static unAuthorized(message = 'Unauthorized, check your authorization token') {
-      return new AuthErrorHandler(403, message); //403 Unauthorized
-  }
-}
-
+import { AuthErrorHandler } from './error.handler';
 export class AuthMiddleware {
 
   async auth(request, response, next) {
